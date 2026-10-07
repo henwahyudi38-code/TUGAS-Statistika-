@@ -1,68 +1,70 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <cmath>
+using namespace std;
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+// Fungsi faktorial
+double faktorial(int n) {
+    double hasil = 1;
 
-# Precompiled Headers
-*.gch
-*.pch
+    for (int i = 1; i <= n; i++) {
+        hasil *= i;
+    }
 
-# Linker files
-*.ilk
+    return hasil;
+}
 
-# Debugger Files
-*.pdb
+// Fungsi kombinasi
+double kombinasi(int n, int r) {
+    return faktorial(n) / (faktorial(r) * faktorial(n - r));
+}
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
+int main() {
+    // =========================
+    // NOMOR 9 - BINOMIAL
+    // =========================
 
-# Fortran module files
-*.mod
-*.smod
+    int n = 5;
+    double p = 0.60;
+    double q = 1 - p;
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+    double P3 = kombinasi(n, 3) * pow(p, 3) * pow(q, 2);
+    double P4 = kombinasi(n, 4) * pow(p, 4) * pow(q, 1);
+    double P5 = kombinasi(n, 5) * pow(p, 5) * pow(q, 0);
 
-# Executables
-*.exe
-*.out
-*.app
+    double hasil9 = P3 + P4 + P5;
 
-# Build directories
-build/
-Build/
-build-*/
+    cout << "======================================" << endl;
+    cout << "       SOAL NOMOR 9 - BINOMIAL" << endl;
+    cout << "======================================" << endl;
 
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
+    cout << "P(X=3) = " << P3 << endl;
+    cout << "P(X=4) = " << P4 << endl;
+    cout << "P(X=5) = " << P5 << endl;
 
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
+    cout << "P(X>=3) = " << hasil9 << endl;
+    cout << "Persentase = " << hasil9 * 100 << "%" << endl;
 
-# vcpkg
-vcpkg_installed/
 
-# debug information files
-*.dwo
+    // =========================
+    // NOMOR 10 - POISSON
+    // =========================
 
-# test output & cache
-Testing/
-.cache/
+    double lambda = 1;
+    int x = 2;
+
+    double hasil10 =
+        (exp(-lambda) * pow(lambda, x)) / faktorial(x);
+
+    cout << endl;
+    cout << "======================================" << endl;
+    cout << "       SOAL NOMOR 10 - POISSON" << endl;
+    cout << "======================================" << endl;
+
+    cout << "Lambda = " << lambda << endl;
+    cout << "X = " << x << endl;
+
+    cout << "P(X=2) = " << hasil10 << endl;
+    cout << "Persentase = " << hasil10 * 100 << "%" << endl;
+
+    return 0;
+}
