@@ -1,2 +1,1 @@
-# TUGAS-Statistika-
-tugas 
+# TUGAS PROBABILITAS 
